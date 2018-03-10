@@ -1,1 +1,1 @@
-worker: python sedyhan.py
+bot: python3 bot.py
