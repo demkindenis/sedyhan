@@ -15,7 +15,7 @@ var_dump($commands);
 // Load composer
 require_once '../vendor/autoload.php';
 var_dump(1111);
-require_once __DIR__ . 'config.php';
+require_once 'config.php';
 
 var_dump(222);
 var_dump($bot_api_key, $bot_username);
