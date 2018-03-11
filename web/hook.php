@@ -17,7 +17,14 @@ require_once 'config.php';
 
 try {
     $rule_array = [
-        'ололо' => 'хуюлоло',
+        'ололо' => 'Хуюлоло',
+        '300' => 'Юморю про тракториста',
+        'санек' => 'А?!',
+        'круть' => 'Седыхуть',
+        'Збс' => 'Сдхс',
+        'ок' => 'Я - кок',
+        'конечно' => 'Седыхечно',
+        'нет' => 'Седонет',
     ];
 
     // Create Telegram API object
@@ -57,12 +64,6 @@ try {
     // Handle telegram webhook request
     $telegram->handle();
 
-    // $result = Request::sendMessage(['chat_id' => '533910', 'text' => 'Your utf8 text 😜 ...']);
-
-    // $text = $telegram ->getMessage()->getText(true);
-
-    // Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram ->getMessage())]);
-
     $post = json_decode(Request::getInput(), true);
     $update = new Update($post, $bot_username);
     $message = $update->getMessage();
@@ -70,13 +71,18 @@ try {
 
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
+        if (mb_strlen($text) < 3) return;
+        
+        if (mb_strlen($text) > 11) {
+            Request::sendMessage(['chat_id' => '533910', 'text' => 'Пидора ответ']);
+            return;
+        }
         $text = mb_strtolower($text);
         $text = str_replace('ё', 'е', $text);
         if (array_key_exists($text, $rule_array)) {
             $text = $rule_array[$text];
         }
         else {
-            Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
             foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'е'] as $letter) {
                 $pos = mb_stripos($text, $letter);
                 if ($pos === false) continue;
@@ -84,10 +90,8 @@ try {
                 
                 $letter_array[$pos] = $letter;
             }
-            Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
             ksort($letter_array);
             $pos_letter = reset($letter_array);
-            Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
             $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
         }
         Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
