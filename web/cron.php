@@ -1,4 +1,5 @@
 <?php
+var_dump(123123);
 /**
  * README
  * This configuration file is intended to run a list of commands with crontab.
