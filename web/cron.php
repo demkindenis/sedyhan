@@ -14,6 +14,7 @@ $commands = [
 var_dump($commands);
 // Load composer
 require_once '../vendor/autoload.php';
+var_dump(1111);
 require_once __DIR__ . 'config.php';
 
 var_dump(222);
