@@ -10,7 +10,7 @@
 
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\Entities\Update;
-use Longman\TelegramBot\Entities\Message;
+// use Longman\TelegramBot\Entities\Message;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';
@@ -19,7 +19,7 @@ try {
     $rule_array = [
         'ололо' => 'хуюлоло',
     ];
-    
+
     // Create Telegram API object
     $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
 
@@ -75,10 +75,12 @@ try {
             $text = $rule_array[$text];
         }
         else {
+            Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
             foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'е'] as $letter) {
                 $pos = mb_stripos($text, $letter);
-                Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.serialize($pos)]);
-                if ($pos !== false) continue;
+                if ($pos === false) continue;
+                Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.$pos]);
+                
                 $letter_array[$pos] = $letter;
             }
             Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
