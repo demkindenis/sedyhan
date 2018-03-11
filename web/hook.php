@@ -66,23 +66,23 @@ try {
 
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
-        foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
-            $pos = mb_stripos($text, $letter);
-            Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.serialize($pos)]);
-            if (!$pos) continue;
-            $letter_array[] = $letter;
+        $text = mb_strtolower($text);
+        if (array_key_exists($text, $rule_array)) {
+            $text = $rule_array[$text];
         }
-        Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
-        
-        $pos_letter = reset($letter_array);
-        Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
-        $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
-        // if (stripos($text, 'у') !== false) {
-        //     $text = 'Седых'.mb_stristr($text, 'у');
-        // }
-        // elseif (stripos($text, 'вет') !== false) {
-        //     $text = 'Седыхует'.mb_stristr($text, 'вет', true);
-        // }
+        else {
+            foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
+                $pos = mb_stripos($text, $letter);
+                Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.serialize($pos)]);
+                if (!$pos) continue;
+                $letter_array[] = $letter;
+            }
+            Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
+            
+            $pos_letter = reset($letter_array);
+            Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
+            $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
+        }
         Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
     }
 
@@ -97,3 +97,7 @@ try {
     // Uncomment this to catch log initialisation errors
     echo $e;
 }
+
+$rule_array = [
+    'ололо' => 'хуюлоло',
+];
