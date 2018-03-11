@@ -6,7 +6,7 @@ $bot_username = 'sedyh_bot';
 
 // Define all IDs of admin users in this array (leave as empty array if not used)
 $admin_users = [
-//    123,
+   533910,
 ];
 
 // Define all paths for your custom commands in this array (leave as empty array if not used)
