@@ -67,7 +67,7 @@ try {
     $post = json_decode(Request::getInput(), true);
     $update = new Update($post, $bot_username);
     $message = $update->getMessage();
-    Request::sendMessage(['chat_id' => '533910', 'text' => $message->getChat()->getId()]);
+    $chat_id = $message->getChat()->getId();
     $text = $message->getText();
 
     $array_words = explode(' ', $text);
@@ -87,8 +87,6 @@ try {
             foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'е'] as $letter) {
                 $pos = mb_stripos($text, $letter);
                 if ($pos === false) continue;
-                Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.$pos]);
-                
                 $letter_array[$pos] = $letter;
             }
             ksort($letter_array);
