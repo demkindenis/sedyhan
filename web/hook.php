@@ -60,8 +60,12 @@ try {
     // Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram ->getMessage())]);
 
     $post = json_decode(Request::getInput(), true);
+    $update = new Update($post, $bot_username);
+    $message = $update->getMessage();
+    $text = $message->getText();
+
     var_dump($post);
-    Request::sendMessage(['chat_id' => '533910', 'text' => serialize($post)]);
+    Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
