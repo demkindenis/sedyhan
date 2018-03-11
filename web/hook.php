@@ -85,8 +85,8 @@ try {
                 $letter_array[$pos] = $letter;
             }
             Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
-            
-            $pos_letter = reset(ksort($letter_array));
+            ksort($letter_array);
+            $pos_letter = reset($letter_array);
             Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
             $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
         }
