@@ -69,8 +69,6 @@ try {
     $update = new Update($post, $bot_username);
     $message = $update->getMessage();
     $chat_id = $message->getChat()->getId();
-    
-    Request::sendMessage(['chat_id' => '533910', 'text' => $chat_id]);
     $text = $message->getText();
 
     $array_words = explode(' ', $text);
