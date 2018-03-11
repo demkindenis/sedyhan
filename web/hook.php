@@ -67,13 +67,11 @@ try {
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
         foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
-            Request::sendMessage(['chat_id' => '533910', 'text' => '$letter: '.$letter]);
-            
-            Request::sendMessage(['chat_id' => '533910', 'text' => 'mb_stripos($text, $letter): '.mb_stripos($text, $letter)]);
+            Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.mb_stripos($text, $letter)]);
             $letter_array[mb_stripos($text, $letter)] = $letter;
         }
         Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
-            
+        
         $pos_letter = reset($letter_array);
         Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
         $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
