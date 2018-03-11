@@ -66,13 +66,16 @@ try {
 
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
-        // substr($text, 1);
-        if (stripos($text, 'у') !== false) {
-            $text = 'Седых'.mb_stristr($text, 'у');
+        foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
+            $letter_array[stripos($text, $letter)] = $letter;
         }
-        elseif (stripos($text, 'вет') !== false) {
-            $text = 'Седыхует'.mb_stristr($text, 'вет', true);
-        }
+        $text = 'Седых'.mb_stristr($text, reset($letter_array));
+        // if (stripos($text, 'у') !== false) {
+        //     $text = 'Седых'.mb_stristr($text, 'у');
+        // }
+        // elseif (stripos($text, 'вет') !== false) {
+        //     $text = 'Седыхует'.mb_stristr($text, 'вет', true);
+        // }
         Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
     }
 
