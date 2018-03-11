@@ -69,8 +69,8 @@ try {
         foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
             Request::sendMessage(['chat_id' => '533910', 'text' => '$letter: '.$letter]);
             
-            Request::sendMessage(['chat_id' => '533910', 'text' => 'stripos($text, $letter): '.stripos($text, $letter)]);
-            $letter_array[stripos($text, $letter)] = $letter;
+            Request::sendMessage(['chat_id' => '533910', 'text' => 'mb_stripos($text, $letter): '.mb_stripos($text, $letter)]);
+            $letter_array[mb_stripos($text, $letter)] = $letter;
         }
         Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
             
