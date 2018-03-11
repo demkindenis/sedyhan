@@ -66,7 +66,13 @@ try {
 
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
-        
+        // substr($text, 1);
+        if (stripos($text, 'у') !== false) {
+            $text = 'Седых'.mb_stristr($text, 'у');
+        }
+        elseif (stripos($text, 'вет') !== false) {
+            $text = 'Седыхует'.mb_stristr($text, 'вет', true);
+        }
         Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
     }
 
