@@ -64,8 +64,12 @@ try {
     $message = $update->getMessage();
     $text = $message->getText();
 
-    var_dump($post);
-    Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
+    $array_words = explode(' ', $text);
+    if (count($array_words) == 1) {
+        
+        Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
+    }
+
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
