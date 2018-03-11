@@ -9,6 +9,7 @@
  */
 
 use Longman\TelegramBot\Request;
+use Longman\TelegramBot\Entities\Message;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';
@@ -53,7 +54,7 @@ try {
 
     // $result = Request::sendMessage(['chat_id' => '533910', 'text' => 'Your utf8 text 😜 ...']);
 
-    Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram)]);
+    Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram->getMessage())]);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
