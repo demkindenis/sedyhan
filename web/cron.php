@@ -11,7 +11,7 @@ $commands = [
     '/whoami',
     "/echo I'm a bot!",
 ];
-
+var_dump($commands);
 // Load composer
 require_once '../vendor/autoload.php';
 require_once __DIR__ . 'config.php';
