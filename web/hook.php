@@ -8,6 +8,8 @@
  * This is a normal behaviour because this address has to be reached only by the Telegram servers.
  */
 
+use Longman\TelegramBot\Request;
+
 require_once '../vendor/autoload.php';
 require_once 'config.php';
 
@@ -49,7 +51,7 @@ try {
     // Handle telegram webhook request
     $telegram->handle();
 
-    // $result = Request::sendMessage(['chat_id' => '533910', 'text' => 'Your utf8 text 😜 ...']);
+    $result = Request::sendMessage(['chat_id' => '533910', 'text' => 'Your utf8 text 😜 ...']);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
