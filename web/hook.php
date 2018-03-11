@@ -67,8 +67,10 @@ try {
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
         foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
-            Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.mb_stripos($text, $letter)]);
-            $letter_array[mb_stripos($text, $letter)] = $letter;
+            $pos = mb_stripos($text, $letter);
+            Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.serialize($pos)]);
+            if (!$pos) continue;
+            $letter_array[] = $letter;
         }
         Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
         
