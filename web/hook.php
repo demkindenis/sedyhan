@@ -8,8 +8,9 @@
  * This is a normal behaviour because this address has to be reached only by the Telegram servers.
  */
 
-use Longman\TelegramBot\Commands\SystemCommand;
+// use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Request;
+use Longman\TelegramBot\Entities\Update;
 // use Longman\TelegramBot\Entities\Message;
 
 require_once '../vendor/autoload.php';
@@ -55,10 +56,10 @@ try {
 
     // $result = Request::sendMessage(['chat_id' => '533910', 'text' => 'Your utf8 text 😜 ...']);
 
-    $text = $telegram ->getMessage()->getText(true);
+    // $text = $telegram ->getMessage()->getText(true);
 
-    Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram ->getMessage())]);
-    Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
+    // Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram ->getMessage())]);
+    Request::sendMessage(['chat_id' => '533910', 'text' => Update::getMessage()]);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
