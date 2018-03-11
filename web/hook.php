@@ -8,33 +8,16 @@
  * This is a normal behaviour because this address has to be reached only by the Telegram servers.
  */
 
-// use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\Entities\Update;
-// use Longman\TelegramBot\Entities\Message;
+use Longman\TelegramBot\Entities\Message;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';
 
-class MyTelegram extends Longman\TelegramBot\Telegram {
-    public function processUpdate(Longman\TelegramBot\Entities\Update $update) {
-      if($message = $update->getMessage()) {
-        $sender = $message->getFrom();
-        $sender_id = $sender->getId();
-        $sender_username = $sender->getUsername();
-        $chat = $message->getChat();
-        $chat_id = $chat->getId();
-        $message_text = $message->getText();
-        // etc etc ....
-      }
-  
-      return parent::processUpdate($update);
-    }
-  }
-
 try {
     // Create Telegram API object
-    $telegram = new MyTelegram($bot_api_key, $bot_username);
+    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
 
     // Add commands paths containing your custom commands
     $telegram->addCommandsPaths($commands_paths);
@@ -75,7 +58,9 @@ try {
     // $text = $telegram ->getMessage()->getText(true);
 
     // Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram ->getMessage())]);
-    Request::sendMessage(['chat_id' => '533910', 'text' => $telegram->message]);
+
+    $post = json_decode(Request::getInput(), true);
+    Request::sendMessage(['chat_id' => '533910', 'text' => $post]);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
