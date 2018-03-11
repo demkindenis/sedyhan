@@ -66,12 +66,12 @@ try {
 
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
-        $text = mb_strtolower($text);
+        $text = mb_strtolower(preg_replace("/(\w*)[ёе](\w*)/isu" ,"$1ё$2|$1е$2", $text));
         if (array_key_exists($text, $rule_array)) {
             $text = $rule_array[$text];
         }
         else {
-            foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
+            foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'е'] as $letter) {
                 $pos = mb_stripos($text, $letter);
                 Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.serialize($pos)]);
                 if ($pos !== false) continue;
