@@ -54,7 +54,8 @@ try {
 
     // $result = Request::sendMessage(['chat_id' => '533910', 'text' => 'Your utf8 text 😜 ...']);
 
-    Request::sendMessage(['chat_id' => '533910', 'text' => serialize($telegram->getMessage())]);
+    $text = $telegram ->getMessage()->getText(true);
+    Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
