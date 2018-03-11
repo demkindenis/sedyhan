@@ -14,7 +14,7 @@ $bot_api_key  = '566295728:AAFrqfGoM1P7FQxlEs2cjHbX9V747bIgH_k';
 $bot_username = 'sedyh_bot';
 // Define all IDs of admin users in this array (leave as empty array if not used)
 $admin_users = [
-//    123,
+    533910,
 ];
 // Define all paths for your custom commands in this array (leave as empty array if not used)
 $commands_paths = [
@@ -54,6 +54,7 @@ try {
     $telegram->enableLimiter();
     // Handle telegram webhook request
     $telegram->handle();
+    $result = Request::sendMessage(['chat_id' => '533910', 'text' => 'Your utf8 text 😜 ...']);
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
     //echo $e;
