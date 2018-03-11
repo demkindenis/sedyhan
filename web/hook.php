@@ -67,6 +67,7 @@ try {
     $post = json_decode(Request::getInput(), true);
     $update = new Update($post, $bot_username);
     $message = $update->getMessage();
+    Request::sendMessage(['chat_id' => '533910', 'text' => serialize($message)]);
     $text = $message->getText();
 
     $array_words = explode(' ', $text);
