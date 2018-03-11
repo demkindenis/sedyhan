@@ -9,7 +9,7 @@
  */
 
 use Longman\TelegramBot\Request;
-use Longman\TelegramBot\Entities\Message;
+// use Longman\TelegramBot\Entities\Message;
 
 require_once '../vendor/autoload.php';
 require_once 'config.php';
