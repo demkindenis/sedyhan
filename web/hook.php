@@ -8,30 +8,8 @@
  * This is a normal behaviour because this address has to be reached only by the Telegram servers.
  */
 
-// Load composer
-require_once __DIR__ . '/vendor/autoload.php';
-
-// Add you bot's API key and name
-$bot_api_key  = 'your:bot_api_key';
-$bot_username = 'username_bot';
-
-// Define all IDs of admin users in this array (leave as empty array if not used)
-$admin_users = [
-//    123,
-];
-
-// Define all paths for your custom commands in this array (leave as empty array if not used)
-$commands_paths = [
-//    __DIR__ . '/Commands/',
-];
-
-// Enter your MySQL database credentials
-//$mysql_credentials = [
-//    'host'     => 'localhost',
-//    'user'     => 'dbuser',
-//    'password' => 'dbpass',
-//    'database' => 'dbname',
-//];
+require_once '../vendor/autoload.php';
+require_once 'config.php';
 
 try {
     // Create Telegram API object

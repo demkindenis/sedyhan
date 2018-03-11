@@ -1,5 +1,4 @@
 <?php
-var_dump(123123);
 /**
  * README
  * This configuration file is intended to run a list of commands with crontab.
@@ -11,15 +10,10 @@ $commands = [
     '/whoami',
     "/echo I'm a bot!",
 ];
-var_dump($commands);
+
 // Load composer
 require_once '../vendor/autoload.php';
-var_dump(1111);
 require_once 'config.php';
-
-var_dump(222);
-var_dump($bot_api_key, $bot_username);
-var_dump(444);
 
 try {
     // Create Telegram API object

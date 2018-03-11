@@ -5,12 +5,8 @@
  * Uncommented parameters must be filled
  */
 
-// Load composer
-require_once __DIR__ . '/vendor/autoload.php';
-
-// Add you bot's API key and name
-$bot_api_key  = 'your:bot_api_key';
-$bot_username = 'username_bot';
+require_once '../vendor/autoload.php';
+require_once 'config.php';
 
 try {
     // Create Telegram API object
