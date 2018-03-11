@@ -15,6 +15,9 @@ $commands = [
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . 'config.php';
 
+
+var_dump($bot_api_key, $bot_username);
+
 try {
     // Create Telegram API object
     $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
