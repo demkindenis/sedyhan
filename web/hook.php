@@ -70,7 +70,8 @@ try {
 
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
-        $text = mb_strtolower(preg_replace("/(\w*)[ёе](\w*)/isu" ,"$1ё$2|$1е$2", $text));
+        $text = mb_strtolower($text);
+        $text = str_replace('ё', 'е', $text);
         if (array_key_exists($text, $rule_array)) {
             $text = $rule_array[$text];
         }
@@ -84,8 +85,8 @@ try {
                 $letter_array[$pos] = $letter;
             }
             Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
-            ksort($letter_array);
-            $pos_letter = reset($letter_array);
+            
+            $pos_letter = reset(ksort($letter_array));
             Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
             $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
         }
