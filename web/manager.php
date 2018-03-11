@@ -14,20 +14,20 @@ require_once 'config.php';
 try {
     $bot = new TelegramBot\TelegramBotManager\BotManager([
         // Add you bot's API key and name
-        'api_key'      => 'your:bot_api_key',
+        'api_key'      => $bot_api_key,
         'bot_username' => $bot_username,
 
         // Secret key required to access the webhook
         'secret'       => 'super_secret',
 
-        //'webhook'      => [
-        //    // When using webhook, this needs to be uncommented and defined
-        //    'url' => 'https://your-domain/path/to/manager.php',
-        //    // Use self-signed certificate
-        //    'certificate' => __DIR__ . '/server.crt',
-        //    // Limit maximum number of connections
-        //    'max_connections' => 5,
-        //],
+        'webhook'      => [
+           // When using webhook, this needs to be uncommented and defined
+           'url' => 'https://sedyhan.herokuapp.com/manager.php',
+           // Use self-signed certificate
+           // 'certificate' => __DIR__ . '/server.crt',
+           // Limit maximum number of connections
+           'max_connections' => 5,
+        ],
 
         //'commands' => [
         //    // Define all paths for your custom commands
@@ -42,9 +42,9 @@ try {
         //],
 
         // Define all IDs of admin users
-        //'admins'       => [
-        //    123,
-        //],
+        'admins'       => [
+            533910,
+        ],
 
         // Enter your MySQL database credentials
         //'mysql'        => [
@@ -81,11 +81,11 @@ try {
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
-    //echo $e;
+    echo $e;
     // Log telegram errors
     Longman\TelegramBot\TelegramLog::error($e);
 } catch (Longman\TelegramBot\Exception\TelegramLogException $e) {
     // Silence is golden!
     // Uncomment this to catch log initialisation errors
-    //echo $e;
+    echo $e;
 }
