@@ -73,14 +73,14 @@ try {
         else {
             foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
                 $pos = mb_stripos($text, $letter);
-                // Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.serialize($pos)]);
+                Request::sendMessage(['chat_id' => '533910', 'text' => $letter.' - mb_stripos($text, $letter): '.serialize($pos)]);
                 if ($pos !== false) continue;
                 $letter_array[$pos] = $letter;
             }
             Request::sendMessage(['chat_id' => '533910', 'text' => serialize($letter_array)]);
             
             $pos_letter = reset($letter_array);
-            // Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
+            Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
             $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
         }
         Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
