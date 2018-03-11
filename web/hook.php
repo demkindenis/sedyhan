@@ -75,7 +75,7 @@ try {
         if (mb_strlen($text) < 3) return;
         
         if (mb_strlen($text) > 11) {
-            Request::sendMessage(['chat_id' => '533910', 'text' => 'Пидора ответ']);
+            Request::sendMessage(['chat_id' => $chat_id, 'text' => 'Пидора ответ']);
             return;
         }
         $text = mb_strtolower($text);
@@ -93,7 +93,7 @@ try {
             $pos_letter = reset($letter_array);
             $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
         }
-        Request::sendMessage(['chat_id' => '533910', 'text' => $text]);
+        Request::sendMessage(['chat_id' => $chat_id, 'text' => $text]);
     }
 
 
