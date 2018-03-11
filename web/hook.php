@@ -69,7 +69,8 @@ try {
         foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'] as $letter) {
             $letter_array[stripos($text, $letter)] = $letter;
         }
-        $pos_letter = key(reset($letter_array));
+        $pos_letter = reset($letter_array);
+        Request::sendMessage(['chat_id' => '533910', 'text' => '$pos_letter: '.$pos_letter]);
         $text = 'Седых'.($pos_letter ? mb_stristr($text, $pos_letter) : '');
         // if (stripos($text, 'у') !== false) {
         //     $text = 'Седых'.mb_stristr($text, 'у');
