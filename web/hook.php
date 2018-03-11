@@ -16,6 +16,10 @@ require_once '../vendor/autoload.php';
 require_once 'config.php';
 
 try {
+    $rule_array = [
+        'ололо' => 'хуюлоло',
+    ];
+    
     // Create Telegram API object
     $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
 
@@ -98,6 +102,3 @@ try {
     echo $e;
 }
 
-$rule_array = [
-    'ололо' => 'хуюлоло',
-];
