@@ -25,6 +25,7 @@ try {
         'ок' => 'Я - кок',
         'конечно' => 'Седыхечно',
         'нет' => 'Седонет',
+        'так' => 'Седытак',
     ];
 
     // Create Telegram API object
@@ -56,7 +57,7 @@ try {
     //$telegram->setCommandConfig('date', ['google_api_key' => 'your_google_api_key_here']);
 
     // Botan.io integration
-    //$telegram->enableBotan('your_botan_token');
+    $telegram->enableBotan('a761547a-a436-406d-a9a2-1ef75b33abb5');
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
     $telegram->enableLimiter();
@@ -68,6 +69,8 @@ try {
     $update = new Update($post, $bot_username);
     $message = $update->getMessage();
     $chat_id = $message->getChat()->getId();
+    
+    Request::sendMessage(['chat_id' => '533910', 'text' => $chat_id]);
     $text = $message->getText();
 
     $array_words = explode(' ', $text);
