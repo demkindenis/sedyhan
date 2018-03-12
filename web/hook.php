@@ -86,18 +86,19 @@ try {
 
     $array_words = explode(' ', $text);
     if (count($array_words) == 1) {
-        if (mb_strlen($text) < 3) return;
-        
-        if (mb_strlen($text) > 11) {
-            Request::sendMessage(['chat_id' => $chat_id, 'text' => 'Пидора ответ']);
-            return;
-        }
-        $text = mb_strtolower($text);
-        $text = str_replace('ё', 'е', $text);
         if (array_key_exists($text, $rule_array)) {
             $text = $rule_array[$text];
         }
         else {
+            if (mb_strlen($text) < 3) return;
+        
+            if (mb_strlen($text) > 11) {
+                Request::sendMessage(['chat_id' => $chat_id, 'text' => 'Пидора ответ']);
+                return;
+            }
+            $text = mb_strtolower($text);
+            $text = str_replace('ё', 'е', $text);
+
             foreach(['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'е'] as $letter) {
                 $pos = mb_stripos($text, $letter);
                 if ($pos === false) continue;
