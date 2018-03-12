@@ -17,10 +17,8 @@
   <script>
     $(document)
       .on('click', '#say', function() {
-        var chat_id = '533910';
-        var text = 'testtest';
-        
-        $.post('https://api.telegram.org/bot566295728:AAFrqfGoM1P7FQxlEs2cjHbX9V747bIgH_k/sendMessage?chat_id='+$('#chat').val()+'&parse_mode=html&text='+encodeURIComponent($('#text').val()), function() {
+        var text = encodeURIComponent($('#text').val());
+        $.post('https://api.telegram.org/bot566295728:AAFrqfGoM1P7FQxlEs2cjHbX9V747bIgH_k/sendMessage?chat_id='+$('#chat').val()+'&parse_mode=html&text='+text, function() {
           alert('я пизданул');
         });
       })
