@@ -20,7 +20,7 @@
         var chat_id = '533910';
         var text = 'testtest';
         
-        $.post('https://api.telegram.org/bot566295728:AAFrqfGoM1P7FQxlEs2cjHbX9V747bIgH_k/sendMessage?chat_id='+$('#chat option:selected').val()+'&parse_mode=html&text='+encodeURIComponent($('#text')), function() {
+        $.post('https://api.telegram.org/bot566295728:AAFrqfGoM1P7FQxlEs2cjHbX9V747bIgH_k/sendMessage?chat_id='+$('#chat').val()+'&parse_mode=html&text='+encodeURIComponent($('#text').val()), function() {
           alert('я пизданул');
         });
       })
