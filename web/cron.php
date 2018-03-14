@@ -48,10 +48,10 @@ try {
     //$telegram->enableBotan('your_botan_token');
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
-    // $telegram->enableLimiter();
+    $telegram->enableLimiter();
 
     // Run user selected commands
-    // $telegram->runCommands($commands);
+    $telegram->runCommands($commands);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
