@@ -9,18 +9,18 @@
  * $ while true; do ./getUpdatesCLI.php; done
  */
 
-// require_once '../vendor/autoload.php';
-// require_once 'config.php';
+require_once '../vendor/autoload.php';
+require_once 'config.php';
 
-// try {
+try {
     // Create Telegram API object
-    // $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
 
     // Add commands paths containing your custom commands
-    // $telegram->addCommandsPaths($commands_paths);
+    $telegram->addCommandsPaths($commands_paths);
 
     // Enable admin users
-    // $telegram->enableAdmins($admin_users);
+    $telegram->enableAdmins($admin_users);
 
     // Enable MySQL
     // $telegram->enableMySql($mysql_credentials);
@@ -45,10 +45,10 @@
     //$telegram->enableBotan('your_botan_token');
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
-    // $telegram->enableLimiter();
+    $telegram->enableLimiter();
 
     // Handle telegram getUpdates request
-    // $server_response = $telegram->handleGetUpdates();
+    $server_response = $telegram->handleGetUpdates();
 
 //     if ($server_response->isOk()) {
 //         $update_count = count($server_response->getResult());
@@ -57,11 +57,11 @@
 //         echo date('Y-m-d H:i:s', time()) . ' - Failed to fetch updates' . PHP_EOL;
 //         echo $server_response->printError();
 //     }
-// } catch (Longman\TelegramBot\Exception\TelegramException $e) {
+} catch (Longman\TelegramBot\Exception\TelegramException $e) {
 //     echo $e->getMessage();
 //     // Log telegram errors
 //     Longman\TelegramBot\TelegramLog::error($e);
-// } catch (Longman\TelegramBot\Exception\TelegramLogException $e) {
+} catch (Longman\TelegramBot\Exception\TelegramLogException $e) {
 //     // Catch log initialisation errors
 //     echo $e->getMessage();
-// }
+}
