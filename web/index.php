@@ -12,7 +12,7 @@
     в чат
     <select class="chat_select" name="chat">
       <option value="533910">Денису</option>
-      <option value="-1001149670525" selected>в чат Грекос (Grekos)</option>
+      <option value="-1001149670525" selected>Грекос (Grekos)</option>
     </select>
     </div>
   Седых спизди <input id="text" type="text" name="text"><span id="say">Пиздануть</span>

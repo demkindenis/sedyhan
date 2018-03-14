@@ -6,24 +6,24 @@
  */
 
 // Your command(s) to run, pass it just like in a message (arguments supported)
-$commands = [
-    '/whoami',
-    "/echo I'm a bot!",
-];
+// $commands = [
+//     '/whoami',
+//     "/echo I'm a bot!",
+// ];
 
 // Load composer
-require_once '../vendor/autoload.php';
-require_once 'config.php';
+// require_once '../vendor/autoload.php';
+// require_once 'config.php';
 
-try {
+// try {
     // Create Telegram API object
-    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+    // $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
 
     // Add commands paths containing your custom commands
-    $telegram->addCommandsPaths($commands_paths);
+    // $telegram->addCommandsPaths($commands_paths);
 
     // Enable admin users
-    $telegram->enableAdmins($admin_users);
+    // $telegram->enableAdmins($admin_users);
 
     // Enable MySQL
     //$telegram->enableMySql($mysql_credentials);
@@ -48,18 +48,18 @@ try {
     //$telegram->enableBotan('your_botan_token');
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
-    $telegram->enableLimiter();
+    // $telegram->enableLimiter();
 
     // Run user selected commands
-    $telegram->runCommands($commands);
+    // $telegram->runCommands($commands);
 
-} catch (Longman\TelegramBot\Exception\TelegramException $e) {
+// } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!
     //echo $e;
     // Log telegram errors
     Longman\TelegramBot\TelegramLog::error($e);
-} catch (Longman\TelegramBot\Exception\TelegramLogException $e) {
+// } catch (Longman\TelegramBot\Exception\TelegramLogException $e) {
     // Silence is golden!
     // Uncomment this to catch log initialisation errors
     //echo $e;
-}
+// }
