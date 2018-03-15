@@ -79,19 +79,13 @@ try {
     // $telegram->enableLimiter();
 
     $telegram->setCustomInput("");
-    var_dump('test');
+    
     // Handle telegram webhook request
     $telegram->handle();
 
     $post = json_decode(Request::getInput(), true);
     $update = new Update($post, $bot_username);
-    $a = $update->getUpdateContent();
-    // Request::sendMessage(['chat_id' => '533910', 'text' => $a]);
-    $b = $a->getMessage();
-    Request::sendMessage(['chat_id' => '533910', 'text' => $b]);
-    // die();
     $message = $update->getMessage();
-    
     $chat_id = $message->getChat()->getId();
     $text = $message->getText();
 
