@@ -89,7 +89,7 @@ try {
     // Request::sendMessage(['chat_id' => '533910', 'text' => $a]);
     $b = $a->getMessage();
     Request::sendMessage(['chat_id' => '533910', 'text' => $b]);
-    die();
+    // die();
     $message = $update->getMessage();
     
     $chat_id = $message->getChat()->getId();
