@@ -40,6 +40,8 @@ try {
         'аренда' => 'Седыхоренда',
         'какает' => 'Седыхкакает',
         'бля' => 'Седобля',
+        'кек' => 'Чебурек',
+        'хах' => 'Поседохахляй мне тут ещё',
     ];
 
     // Create Telegram API object
@@ -74,8 +76,10 @@ try {
     $telegram->enableBotan('a761547a-a436-406d-a9a2-1ef75b33abb5');
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
-    $telegram->enableLimiter();
+    // $telegram->enableLimiter();
 
+    $telegram->setCustomInput("");
+    var_dump('test');
     // Handle telegram webhook request
     $telegram->handle();
 
