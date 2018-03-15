@@ -81,7 +81,7 @@ try {
 
     $post = json_decode(Request::getInput(), true);
     $update = new Update($post, $bot_username);
-    $a = serialize($update->getUpdateContent());
+    $a = serialize($update->getUpdateContent()->getMessage());
     Request::sendMessage(['chat_id' => '533910', 'text' => $a]);
     $message = $update->getMessage();
     
